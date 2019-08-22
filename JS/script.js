@@ -42,11 +42,11 @@ btn1.onclick = (tm)=>{
 	var tm = +prompt(`Введите значение параметра "times": `);
 	
 	const loop  = (times = 0, callback = null) => {
-		for (var i = 0; i == times; i++) {
+		for (var i = 0; i < times; i++) {
 			callback();			
 		}
 	};
-	loop(tm, callback = ()=> alert("функция сработала " + tm + "раз!" = 0 ) )
+	loop(tm, callback = ()=> alert("функция сработает " + tm + "раз!") )
 	console.log(tm);
 }
 	

@@ -102,28 +102,67 @@ Human -> Employee -> Manager
 У класса Employee должны присутствовать параметры: salary (число), department (строка)
 В классе Human должен присутствовать метод displayInfo, который возвращает строку со всеми параметрами экземпляра Human.
 В классе Employee должен быть реализовать такой же метод (displayInfo), который вызывает базовый метод и дополняет его параметрами из экземпляра Employee
-Чтобы вызвать метод базового класса, необходимо внутри вызова метода displayInfo класса Employee написать: super.displayInfo(), это вызовет метод disaplyInfo класс Human и вернет строку с параметрами Human'a.*/
+Чтобы вызвать метод базового класса, необходимо внутри вызова метода displayInfo класса Employee написать: super.displayInfo(), это вызовет метод 
+disaplyInfo класс Human и вернет строку с параметрами Human'a.*/
 
 class Human {
-	constructor(){
-
+	constructor(name, age, dateOfBirth){
+		this.name = name;
+		this.age = age;
+		this.dateOfBirth = dateOfBirth;
 	}
+	displayInfo() {
+		console.log(this)
+	}
+
 }
 
 class Employee extends Human {
-	constructor(){
-
+	constructor(name, age, dateOfBirth,salary,department){
+		super(name, age, dateOfBirth);
+		this.salary = salary;
+		this.department = department;
+	}
+	displayInfo() {
+		super.displayInfo();
 	}
 }
 
 class Developer extends Employee{
-	constructor() {
-
+	constructor(name, age, dateOfBirth,salary,department, manager = '') {
+		super(name, age, dateOfBirth,salary,department);
+		this.manager = manager;
+	}
+	reManager (manager) {
+		this.manager = manager;
+	}
+	displayInfo(){
+		super.displayInfo();
 	}
 }
 
 class Manager extends Employee{
-	constructor() {
-
+	constructor(name, age, dateOfBirth,salary,department, developers = []) {
+		super(name, age, dateOfBirth,salary,department);
+		this.dev = developers;
 	} 
+	addDev(developer){ 
+		this.dev.push(developer);
+	}
+	delDev(developer) {
+		this.dev.pop();
+	}
 }
+
+let newManager = new Manager('Kot', 31, 1988, 3, 'IT');
+
+console.log(newManager);
+newManager.addDev();
+console.log (newManager);
+newManager.delDev();
+console.log(newManager);
+
+let newDeveloper = new Developer();
+console.log (newDeveloper);
+newDeveloper.reManager();
+console.log (newDeveloper);

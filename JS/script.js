@@ -22,7 +22,32 @@ Human -> Employee -> Manager
 
 const taskTag = `<h3>${t1}</h3>
 				<button class="btn1">Показать работу функции "loop"</button>
-				<h3>${t2}</h3> 
+				<pre class="task"> 
+				Это сама функция, и ее простейший пример решения:
+
+				const loop  = (times = 0, callback = null) => {
+					for (var i = 0; i < times; i++) {
+						callback();			
+					}
+				};
+
+				loop(5, callback = ()=> alert("функция сработает " + 5 + " раз!") )'</pre>
+				
+				<h3>${t2}</h3>
+				<pre class="task"> 
+				const calculateArea = (a,b,c,d) => {
+					let {area,figure,input} = {
+						area: a,
+						figure: b,
+						input:[c,d]
+					}
+						return {area,figure,input};
+				};
+
+				console.log (calculateArea(4,'квадрат', 2,2))
+				
+				P/s. Результат в консоли))</pre>
+
 				<h3>${t3}</h3>
 				<p>${t30}</p>
 				<h3>${t4}</h3>`
@@ -46,12 +71,26 @@ btn1.onclick = (tm)=>{
 			callback();			
 		}
 	};
-	loop(tm, callback = ()=> alert("функция сработает " + tm + "раз!") )
+	loop(tm, callback = ()=> alert("функция сработает " + tm + " раз!") )
 	console.log(tm);
 }
 	
-
+/*2. Написать функцию calculateArea, которая будет принимать параметры, для вычисления площади (можете выбрать какую то конкретную фигуру, 
+а можете, основываясь на переданных параметрах, выполнять требуемый алгоритм вычисления площади для переданной в параметрах фигуры) и возвращать 
+объект вида: { area, figure, input }, где area - вычисленная площадь, figure - название фигуры, для которой вычислялась площадь, input - входные 
+параметры, по которым было произведено вычисление.*/
 	
+
+const calculateArea = (a,b,c,d) => {
+	let {area,figure,input} = {
+		area: a,
+		figure: b,
+		input:[c,d]
+	}
+	return {area,figure,input};
+};
+
+console.log (calculateArea(4,'квадрат', 2,2))
 
 
 

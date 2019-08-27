@@ -171,3 +171,18 @@ let newDeveloper = new Developer();
 console.log (newDeveloper);
 newDeveloper.reManager();
 console.log (newDeveloper);
+
+/*4*. Написать цикл, который создаёт массив промисов, внутри каждого промиса происходит обращение к ресурсу (https://jsonplaceholder.typicode.com/users/number), где вместо number подставляется число от 1 до 10, 
+в итоге должно получиться 10 промисов. Следует дождаться выполнения загрузки всеми промисами и далее вывести массив загруженных данных.*/
+
+const promiseArray = [];
+
+for (let i = 0; i < 10; i++) {
+	promiseArray [i] = new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(`https://jsonplaceholder.typicode.com/users/${i+1}`)
+		}, 2000);
+	});
+}
+
+Promise.all(promiseArray).then(result => console.log(result))

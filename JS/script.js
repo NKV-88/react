@@ -67,9 +67,11 @@ btn1.onclick = (tm)=>{
 	var tm = +prompt(`Введите значение параметра "times": `);
 	
 	const loop  = (times = 0, callback = null) => {
-		for (var i = 0; i < times; i++) {
+		if (typeof callback === 'function'){
+		for (var i = 0; i < times; i++){
 			callback();			
 		}
+	}
 	};
 	loop(tm, callback = ()=> alert("функция сработает " + tm + " раз!") )
 	console.log(tm);
@@ -81,16 +83,16 @@ btn1.onclick = (tm)=>{
 параметры, по которым было произведено вычисление.*/
 	
 
-const calculateArea = (a,b,c,d) => {
+const calculateArea = (b,c,d) => {
 	let {area,figure,input} = {
-		area: a,
+		area: c*d,
 		figure: b,
 		input:[c,d]
 	}
 	return {area,figure,input};
 };
 
-console.log (calculateArea(4,'квадрат', 2,2))
+console.log (calculateArea('квадрат', 2,2))
 
 
 /*3. Необходимо написать иерархию классов вида:`,
@@ -147,16 +149,19 @@ class Manager extends Employee{
 		this.dev = developers;
 	} 
 	addDev(developer){ 
-		this.dev.push(developer);
+		this.dev.push("developer");
 	}
 	delDev(developer) {
-		this.dev.pop();
+		let ind = this.dev.indexOf("developer");
+		this.dev.splice(ind,1);
 	}
 }
 
 let newManager = new Manager('Kot', 31, 1988, 3, 'IT');
 
 console.log(newManager);
+newManager.addDev();
+newManager.addDev();
 newManager.addDev();
 console.log (newManager);
 newManager.delDev();

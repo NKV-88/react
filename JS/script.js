@@ -177,12 +177,8 @@ console.log (newDeveloper);
 
 const promiseArray = [];
 
-for (let i = 0; i < 10; i++) {
-	promiseArray [i] = new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve(`https://jsonplaceholder.typicode.com/users/${i+1}`)
-		}, 2000);
-	});
-}
+for (let i = 1; i < 11; i++) {
+	promiseArray [i] = fetch('https://jsonplaceholder.typicode.com/users/' + i).then(res=>res.json());
+	}
 
-Promise.all(promiseArray).then(result => console.log(result))
+Promise.all(promiseArray).then(result => result.shift(console.log(result)))

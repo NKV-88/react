@@ -50,7 +50,8 @@ const taskTag = `<h3>${t1}</h3>
 
 				<h3>${t3}</h3>
 				<p>${t30}</p>
-				<h3>${t4}</h3>`
+				<h3>${t4}</h3>
+				`
 
 const write = () => {
 	document.querySelector (`.task`).innerHTML = taskTag;
